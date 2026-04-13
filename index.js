@@ -12,9 +12,10 @@ const modalText = document.getElementById("modal-text");
 
 formBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  const emailValue = emailInput.value;
+  const emailValue = emailInput.value.trim();
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if (!emailValue || !emailValue.includes("@")) {
+  if (!emailPattern.test(emailValue)) {
     warningIcon.style.display = "block";
     warningText.style.display = "block";
     emailInput.style.border = "2px solid var(--Red-500)";
